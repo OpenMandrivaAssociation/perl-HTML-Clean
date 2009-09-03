@@ -1,6 +1,6 @@
 %define module	HTML-Clean
 %define version 0.8
-%define release %mkrel 10
+%define release %mkrel 11
 
 Summary:	HTML shrinker
 Name:		perl-%{module}
