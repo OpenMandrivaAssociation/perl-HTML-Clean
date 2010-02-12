@@ -1,18 +1,18 @@
-%define module	HTML-Clean
-%define version 0.8
-%define release %mkrel 11
+%define upstream_name	 HTML-Clean
+%define upstream_version 0.8
+
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
 Summary:	HTML shrinker
-Name:		perl-%{module}
-Version:	%{version}
-Release:	%{release}
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Source0:	%{module}-%{version}.tar.bz2
-Url:		http://search.cpan.org/dist/%module/
-BuildRoot:	%{_tmppath}/%{name}-buildroot/
-Requires:	perl
+Url:		http://search.cpan.org/dist/%{upstream_name}/
+Source0:	http://www.cpan.org/modules/by-module/HTML/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 The HTML::Clean module encapsulates a number of HTML optimizations
@@ -21,7 +21,7 @@ properly in more browsers.  Think of it as a compiler that
 translates HTML input into optimized machine readable code.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -44,4 +44,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/*/*
 %{perl_vendorlib}/HTML
 %{perl_vendorlib}/auto
-
