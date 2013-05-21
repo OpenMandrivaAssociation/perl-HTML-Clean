@@ -3,7 +3,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Release:	6
 
 Summary:	HTML shrinker
 License:	GPL+ or Artistic
