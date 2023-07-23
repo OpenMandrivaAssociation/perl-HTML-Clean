@@ -1,14 +1,13 @@
 %define modname	HTML-Clean
-%define modver	0.8
 
 Summary:	HTML shrinker
 Name:		perl-%{modname}
-Version:	%perl_convert_version %{modver}
-Release:	3
+Version:	1.4
+Release:	1
 License:	GPLv2+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{modname}/
-Source0:	http://www.cpan.org/modules/by-module/HTML/%{modname}-%{modver}.tar.bz2
+Source0:	http://www.cpan.org/modules/by-module/HTML/%{modname}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRequires:	perl-devel
 
@@ -19,11 +18,11 @@ properly in more browsers.  Think of it as a compiler that
 translates HTML input into optimized machine readable code.
 
 %prep
-%setup -qn %{modname}-%{modver}
+%autosetup -n %{modname}-%{version} -p1
+%__perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" --skipdeps </dev/null
 
 %build
-%__perl Makefile.PL INSTALLDIRS=vendor
-%make
+%make_build
 
 %check
 %make test
